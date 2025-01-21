@@ -4,7 +4,8 @@ import { Button } from '@mui/material';
 import ExperienceInfo from './ExperienceInfo';
 import ProjectsInfo from './ProjectsInfo';
 import { useDispatch } from 'react-redux';
-import { setBasicInfo } from '../reduxSlices/basicInfo/basicInfoSlice';
+import { setBasicInfo } from '../features/basicInfo/basicInfoSlice';
+import { setExperienceInfo } from '../features/experienceInfo/experienceInfoSlice';
 
 export default function StepperForm() {
     const [step, setStep] = React.useState(1)
@@ -24,6 +25,9 @@ export default function StepperForm() {
             const data = currentRef.current.getData()
             if(step===1){
                 dispatch(setBasicInfo(data))
+            }
+            if(step===2){
+                dispatch(setExperienceInfo(data))
             }
             console.log(`Step ${step} data:`, data);
         }

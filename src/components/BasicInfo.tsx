@@ -1,5 +1,7 @@
 import { TextField } from '@mui/material'
 import React, { useImperativeHandle, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../app/store'
 
 const fields = [
     {
@@ -32,6 +34,8 @@ const fields = [
 
 const BasicInfo = React.forwardRef(({},ref) => {
     const[basicInfo,setBasicInfo]=useState({})
+    const basicInfoData = useSelector((state:RootState)=>state)
+    console.log('basicInfoData',basicInfoData)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
